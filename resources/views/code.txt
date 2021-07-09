@@ -1,0 +1,96 @@
+namespace App\Http\Livewire;
+
+use Livewire\Component;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+class Roles extends Component
+{
+public $name;
+public $updateMode = false;
+public $inputs = [];
+public $i = 1;
+
+public function add($i)
+{
+$i = $i + 1;
+$this->i = $i;
+array_push($this->inputs ,$i);
+}
+
+public function remove($i)
+{
+unset($this->inputs[$i]);
+}
+
+public function save(){
+
+}
+
+public function render()
+{
+return view('livewire.roles');
+}
+
+private function resetInputFields(){
+$this->name = '';
+}
+
+public function store()
+
+{
+
+$validatedDate = $this->validate([
+
+'name.0' => 'required',
+'name.*' => 'required'
+
+],
+[
+'name.0.required' => 'name field is required',
+'name.*.required' => 'name field is required'
+]
+
+);
+
+
+
+foreach ($this->name as $key => $value) {
+Role::create(['name' => $this->name[$key]]);
+}
+$this->inputs = [];
+$this->resetInputFields();
+session()->flash('message', 'Roles Created Successfully.');
+
+}
+}
+
+
+
+
+<div>
+
+    <div class="input-group input-group-sm mb-1">
+        <input type="text" class="form-control" placeholder="name" wire:model="name.0" aria-label="Recipient's username"
+            aria-describedby="button-addon2">
+        <button class="btn btn-outline-info" type="button" id="button-addon2" wire:click="add({{$i}})"><b>+</b></button>
+
+    </div>
+    @error('name.0') <span class="text-danger error">{{ $message }}</span>@enderror
+
+
+    @foreach($inputs as $key => $value)
+    <div class="input-group input-group-sm mb-1">
+        <input type="text" class="form-control" placeholder="name" wire:model="name.{{$value}}"
+            aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-danger" type="button" wire:click="remove({{$key}})"
+            id="button-addon2"><b>x</b></button>
+
+
+    </div>
+    @error('name.'.$value) <span class="text-danger error">{{ $message }}</span>@enderror
+    @endforeach
+
+    <button type="button" class="btn btn-info btn-sm" wire:click.prevent="store()">Save & close</button>
+
+</div>
