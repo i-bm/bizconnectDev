@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasRight1" aria-controls="offcanvasRight">
-                        Add new role</button>
+                        Add new role +</button>
 
                     <button class="btn btn-info btn-sm" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasRight2" aria-controls="offcanvasRight">
