@@ -172,6 +172,7 @@ class UserController extends Controller
 
     public function user_update(Request $request, $id){
 
+
         $validator = Validator::make($request->all(), [
             'name'=>'required|min:4',
             'phone'=>'required|digits:10|numeric',
@@ -193,5 +194,6 @@ class UserController extends Controller
             Alert::success('User updated successfully', 'User details have been updated');
             return redirect()->route('users.index');
         }
+
     }
 }
