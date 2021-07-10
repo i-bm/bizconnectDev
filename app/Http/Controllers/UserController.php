@@ -171,6 +171,6 @@ class UserController extends Controller
 
 
     public function user_update(Request $request, $id){
-        
+        $pull_request = "New pull request";
     }
 }
