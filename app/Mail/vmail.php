@@ -32,7 +32,7 @@ class vmail extends Mailable
     {
         return $this->subject('Verification Email')
             ->view('emails.vmail')
-            ->from('mike17gh@gmail.com');
+            ->from('noreply@bizconnect.com');
         // return $this->view('emails.vmail');
     }
 }
