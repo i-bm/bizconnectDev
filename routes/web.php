@@ -20,9 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 // Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => ['auth']], function() {
+
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('access', [App\Http\Controllers\AccessController::class, 'index'])->name('access.index');
     Route::post('access/addrole', [App\Http\Controllers\AccessController::class, 'addrole'])->name('role.add');
     Route::post('access/addpermission', [App\Http\Controllers\AccessController::class, 'addpermission'])->name('permission.add');

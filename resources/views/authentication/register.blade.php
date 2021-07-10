@@ -45,7 +45,6 @@
     </div>
 
 
-
     <div class="form-group tx-12">By clicking the Sign Up button below, you agreed to our privacy policy and terms of
         use of our website.</div>
     <button type="submit" class="btn btn-info btn-block">Sign Up</button>

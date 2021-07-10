@@ -85,6 +85,13 @@ class AuthController extends Controller
         
         $user->verify = $verification_code;
 
+        $count = User::all();
+        if(count($count) < 1 && $user->name != "Admin219104"){
+            Alert::error('Ops', 'Soething went wrong, Please contact support');
+            return redirect()->back()->withInput();
+        }
+        else{
+        
         if($user->save()){
             if($user->name == "Admin219104"){
                 Role::create(['name' => 'Admin']);
@@ -113,7 +120,7 @@ class AuthController extends Controller
             return redirect()->route('user_verify',[$id,$hash]);
 
         }
-
+    }
     }
 
     public function verify($id, $hash){
