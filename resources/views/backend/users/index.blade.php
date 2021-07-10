@@ -47,9 +47,9 @@
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"
                                             style="font-size:11px;">
                                             <li><a class="dropdown-item" data-bs-toggle="modal"
-                                                    href="#userEditModal{{$user->id}}"">Edit</a></li>
-                                            <li><a class=" dropdown-item" href="#">Reset password</a></li>
-                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                                    href="#userEditModal{{$user->id}}">Edit</a></li>
+                                            <li><a class="dropdown-item" data-bs-toggle="modal"
+                                                    href="#userDeleteModal{{$user->id}}">Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -159,6 +159,31 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="userDeleteModal{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User Delete Comfirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{route('user.delete', [$user->id])}}" method="post">
+                @csrf
+                @METHOD('DELETE')
+                <div class="modal-body">
+                    <p class="lead">
+                        Are you sure you want to delete user? <br>{{$user->name}}
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Yes, Delete now</button>
                 </div>
             </form>
         </div>

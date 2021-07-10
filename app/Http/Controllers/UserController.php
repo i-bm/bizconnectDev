@@ -196,4 +196,11 @@ class UserController extends Controller
         }
 
     }
+
+    public function user_delete(Request $request, $id){
+        $user = User::find($id);
+        $user->delete();
+        Alert::toast('User has been removed','success');
+        return redirect()->route('users.index');
+    }
 }

@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth','statusCheck']], function() {
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::post('/users/add', [App\Http\Controllers\UserController::class, 'user_create'])->name('user.create');
     Route::any('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'user_update'])->name('user.update');
+    Route::delete('/users/delete/{id}', [App\Http\Controllers\UserController::class, 'user_delete'])->name('user.delete');
 });
 
 
