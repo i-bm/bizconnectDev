@@ -33,7 +33,7 @@ class UserController extends Controller
             'name'=>'required|min:4',
             'phone'=>'required|digits:10|numeric|unique:users',
             'email'=>'required|email|unique:users',
-            'password' => 'min:5|confirmed|required_with:password_confirmation',
+            'password' => 'min:8|confirmed|required_with:password_confirmation',
         ]);
         
         if ($validator->fails()) {
