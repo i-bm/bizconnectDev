@@ -31,8 +31,8 @@ class vmail extends Mailable
     public function build()
     {
         return $this->subject('Verification Email')
-            ->view('emails.vmail')
-            ->from('noreply@bizconnect.com');
+            ->view('emails.vmail');
+            // ->from('noreply@bizconnect.com');
         // return $this->view('emails.vmail');
     }
 }
