@@ -24,11 +24,17 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth','statusCheck']], function() {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('access', [App\Http\Controllers\AccessController::class, 'index'])->name('access.index');
-    Route::post('access/addrole', [App\Http\Controllers\AccessController::class, 'addrole'])->name('role.add');
-    Route::post('access/addpermission', [App\Http\Controllers\AccessController::class, 'addpermission'])->name('permission.add');
-    Route::post('access/rolepermission/{id}', [App\Http\Controllers\AccessController::class, 'rolepermission'])->name('permission.role');
+    Route::get('/access', [App\Http\Controllers\AccessController::class, 'index'])->name('access.index');
+    Route::post('/access/addrole', [App\Http\Controllers\AccessController::class, 'addrole'])->name('role.add');
+    Route::post('/access/addpermission', [App\Http\Controllers\AccessController::class, 'addpermission'])->name('permission.add');
+    Route::post('/access/rolepermission/{id}', [App\Http\Controllers\AccessController::class, 'rolepermission'])->name('permission.role');
 
+});
+
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::post('/users/add', [App\Http\Controllers\UserController::class, 'user_create'])->name('user.create');
+    Route::put('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'user_update'])->name('user.update');
 });
 
 
