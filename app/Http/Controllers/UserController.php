@@ -171,6 +171,27 @@ class UserController extends Controller
 
 
     public function user_update(Request $request, $id){
-        $pull_request = "New pull request";
+
+        $validator = Validator::make($request->all(), [
+            'name'=>'required|min:4',
+            'phone'=>'required|digits:10|numeric',
+             ]);
+
+             if ($validator->fails()) {
+                Alert::toast('Opps... Unable to Update. try again, Check if the email and phone number doesnt exist already', 'error');
+                return redirect()->back();
+            }
+
+        $user = User::find($id);
+            $user->name = $request->name;
+            $user->phone = $request->phone;
+            $user->accesslevel = $request->access;
+    
+        if($user->save()){
+            $user->assignRole($request->access);
+
+            Alert::success('User updated successfully', 'User details have been updated');
+            return redirect()->route('users.index');
+        }
     }
 }

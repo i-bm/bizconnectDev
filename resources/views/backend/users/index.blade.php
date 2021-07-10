@@ -41,7 +41,7 @@
                                     <div class="dropdown">
                                         <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button"
                                             id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                            ...
+
                                         </a>
 
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"
@@ -128,7 +128,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Edit User Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('user.update', $user->id)}}" method="post">
+            <form action="{{route('user.update', [$user->id])}}" method="post">
                 @csrf
                 @METHOD('PATCH')
                 <div class="modal-body">
@@ -137,11 +137,7 @@
                         <input type="text" class="form-control form-control-sm" value="{{$user->name}}" name="name"
                             required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email address</label>
-                        <input type="email" class="form-control form-control-sm" name="email" value="{{$user->email}}"
-                            required>
-                    </div>
+
                     <div class="mb-3">
                         <label class="form-label">Phone</label>
                         <input type="text" class="form-control form-control-sm" name="phone" value="{{$user->phone}}"
