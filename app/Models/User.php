@@ -29,7 +29,7 @@ class User extends Authenticatable
         'status',
     ];
 
-    public function getActivitylogOptions(): LogOptions
+   function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
         ->logOnly([
