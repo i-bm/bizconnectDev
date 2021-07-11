@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '9656b844637c575af5cd64488d698106f4eec1ad',
+    'reference' => 'bbba13877142901d1d745d855832443177cb568a',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -469,7 +469,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '9656b844637c575af5cd64488d698106f4eec1ad',
+      'reference' => 'bbba13877142901d1d745d855832443177cb568a',
     ),
     'laravel/sail' => 
     array (
@@ -1026,24 +1026,6 @@ private static $installed = array (
       array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
-    ),
-    'spatie/laravel-activitylog' => 
-    array (
-      'pretty_version' => '4.0.0',
-      'version' => '4.0.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'f1e8e8ea2cb85945d5ac770e979b0381cc82da52',
-    ),
-    'spatie/laravel-package-tools' => 
-    array (
-      'pretty_version' => '1.9.0',
-      'version' => '1.9.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'cf4c4cec220575e2864c6082842d76822421f1b1',
     ),
     'spatie/laravel-permission' => 
     array (
