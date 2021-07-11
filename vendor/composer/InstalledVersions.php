@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '7d70f98db03c5bf3788bbe4e06c21aff48db604b',
+    'reference' => '7e13725a3b903341b16b0343e7f101112f5e553b',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -437,6 +437,15 @@ private static $installed = array (
         0 => 'v8.49.1',
       ),
     ),
+    'io-developer/php-whois' => 
+    array (
+      'pretty_version' => '4.1.0',
+      'version' => '4.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '356a70223bbb232b20e6bff04e47c67b839286f3',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -460,7 +469,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '7d70f98db03c5bf3788bbe4e06c21aff48db604b',
+      'reference' => '7e13725a3b903341b16b0343e7f101112f5e553b',
     ),
     'laravel/sail' => 
     array (
@@ -1328,6 +1337,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'b43b05cf43c1b6d849478965062b6ef73e223bb5',
+    ),
+    'true/punycode' => 
+    array (
+      'pretty_version' => 'v2.1.1',
+      'version' => '2.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a4d0c11a36dd7f4e7cd7096076cab6d3378a071e',
     ),
     'vlucas/phpdotenv' => 
     array (
