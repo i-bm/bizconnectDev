@@ -39,6 +39,14 @@ Route::group(['middleware' => ['auth','statusCheck']], function() {
 });
 
 
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/packages', [App\Http\Controllers\PackageController::class, 'index'])->name('packages.index');
+    Route::post('/packages/add', [App\Http\Controllers\PackageController::class, 'package_create'])->name('package.create');
+    Route::any('/packages/edit/{id}', [App\Http\Controllers\PackageController::class, 'package_update'])->name('package.update');
+    Route::delete('/packages/delete/{id}', [App\Http\Controllers\PackageController::class, 'package_delete'])->name('package.delete');
+    
+});
+
 Route::get('/auth/login', [App\Http\Controllers\AuthController::class, 'index'])->name('user_login');
 
 Route::get('/auth/register', [App\Http\Controllers\AuthController::class, 'register'])->name('user_register');

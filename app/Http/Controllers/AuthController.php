@@ -113,7 +113,7 @@ class AuthController extends Controller
             $emessage = "Hi! ". $user->name .", Your account has been created. please click on the link below verify your account with this code: ". $user->verify;
             $emessage.= " ".url('/account/verification/')."/".$user->id."/".$hash;
 
-            $this->sms($recipient, $message);
+            // $this->sms($recipient, $message);
             $this->send_email($user->email, $title, $emessage);
 
             Alert::success('Account created successfully', 'Please check Your Email or Phone to Verify Your Account');
