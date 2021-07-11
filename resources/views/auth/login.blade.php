@@ -11,66 +11,39 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
-    <link href="{{asset('assets/fonts/publica/stylesheet.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
 
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style type="text/css">
-        body {
-    font-family: 'publica_sanslight', sans-serif;
-    font-weight: normal;
-    font-style: normal;
-}
-
-.form-control:focus{
-    outline: 0;
-    border-color:transparent !important;
-    box-shadow: none !important
-}
-.form-control{
-    height: 50px !important;
-    background-color: #fff !important;
-    border-radius: 0 !important;
-}
-
-button.new{
-    height: 50px;
-    font-size: 1.2rem !important;
-    background: #FF9E20 ;
-    border:#FF9E20;
-    color:#fff;
-}
-
-button.new: hover{
-    background:#ce7b10 !important;
-}
-    </style>
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+ 
   
  
 </head>
-<body>
+<body class="signin-signup">
 
 <main>
-<div class="container">
-    <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-md-5" style="margin-top:10vh" >
-            <div class="card1">
+<div class="container ">
+    <div class="row shadow">
+        <div class="col-md-6 login">
+            <div class="">
 
-                <div class="card-body">
+                <div class="">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="text-center mb-4">
-                            {{-- <img width="150" class="mb-4" src="{{asset('assets/img/logo/logo1.png')}}" alt="TechMarket Logo"/><br/> --}}
-                            <h1>BIZ CONNECT</h1>
-                            <h4 class="text-center">Login to the dashboard</h4>
+                        <div class="text-center1 mb-4">
+                            <img width="150" class="mb-5" src="{{asset('assets/img/logo/logo.png')}}" alt="Biz Connect Logo"/><br/>
+                            {{-- <h1>BIZ CONNECT</h1> --}}
+                            <h4 class="text-center1">Log in to your account</h4>
                         </div>
                         
                         <div class="form-group">
@@ -117,13 +90,23 @@ button.new: hover{
                                 <button type="submit" class="btn btn-block rounded-0 new">
                                     {{ __('Login') }}
                                 </button>
-
-                               
                             </div>
+                        </div>
+                        <h5 class="register">Not registered yet? <a href="#">Create an account</a></h5>
+
+                        <div class="login-footer d-flex justify-content-between">
+                            <p>@2021 Biz Connect. All rights reserved.</p>
+                            {{-- <p>Terms of service</p> --}}
+                            <p class="float-left">Privacy Policy</p>
                         </div>
                     </form>
                 </div>
             </div>
+        </div>
+
+        <div class="col-md-6 p-0">
+            <img src="assets/img/bg.jpg" style="min-height: 500px" class="img-fluid" alt="">
+            {{-- <div class="img-side"></div> --}}
         </div>
     </div>
 </div>
