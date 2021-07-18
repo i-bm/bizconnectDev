@@ -47,6 +47,15 @@ Route::group(['middleware' => ['auth','statusCheck']], function() {
     
 });
 
+
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/themes', [App\Http\Controllers\ThemeController::class, 'index'])->name('themes.index');
+    Route::post('/themes/add', [App\Http\Controllers\ThemeController::class, 'theme_create'])->name('theme.create');
+    Route::any('/themes/edit/{id}', [App\Http\Controllers\ThemeController::class, 'theme_update'])->name('theme.update');
+    Route::delete('/themes/delete/{id}', [App\Http\Controllers\ThemeController::class, 'theme_delete'])->name('theme.delete');
+    
+});
+
 Route::get('/auth/login', [App\Http\Controllers\AuthController::class, 'index'])->name('user_login');
 
 Route::get('/auth/register', [App\Http\Controllers\AuthController::class, 'register'])->name('user_register');
