@@ -80,6 +80,7 @@ class ThemeController extends Controller
 
     public function theme_delete(Request $request, $id){
         $theme = Theme::find($id);
+        $theme->themeupload()->delete();
         $theme->delete();
         Alert::toast('Theme has been removed','success');
         return redirect()->route('themes.index');
