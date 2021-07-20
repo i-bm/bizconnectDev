@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Jobs\\SendEmailJob' => $baseDir . '/app/Jobs/SendEmailJob.php',
     'App\\Mail\\vmail' => $baseDir . '/app/Mail/vmail.php',
+    'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Package' => $baseDir . '/app/Models/Package.php',
     'App\\Models\\Theme' => $baseDir . '/app/Models/Theme.php',
     'App\\Models\\Themeupload' => $baseDir . '/app/Models/Themeupload.php',

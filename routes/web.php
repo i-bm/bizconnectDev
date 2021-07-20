@@ -53,6 +53,17 @@ Route::group(['middleware' => ['auth','statusCheck']], function() {
     Route::post('/themes/add', [App\Http\Controllers\ThemeController::class, 'theme_create'])->name('theme.create');
     Route::any('/themes/edit/{id}', [App\Http\Controllers\ThemeController::class, 'theme_update'])->name('theme.update');
     Route::delete('/themes/delete/{id}', [App\Http\Controllers\ThemeController::class, 'theme_delete'])->name('theme.delete');
+
+    
+    
+});
+
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/setup/categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
+    Route::post('/setup/categories/add', [App\Http\Controllers\CategoryController::class, 'category_create'])->name('category.create');
+    Route::any('/setup/categories/edit/{id}', [App\Http\Controllers\CategoryController::class, 'category_update'])->name('category.update');
+    Route::delete('/setup/categories/delete/{id}', [App\Http\Controllers\CategoryController::class, 'category_delete'])->name('category.delete');
+
     
 });
 

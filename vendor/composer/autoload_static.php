@@ -567,6 +567,7 @@ class ComposerStaticInitc5c2170488866bbd1aefeefce032b835
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Jobs\\SendEmailJob' => __DIR__ . '/../..' . '/app/Jobs/SendEmailJob.php',
         'App\\Mail\\vmail' => __DIR__ . '/../..' . '/app/Mail/vmail.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Package' => __DIR__ . '/../..' . '/app/Models/Package.php',
         'App\\Models\\Theme' => __DIR__ . '/../..' . '/app/Models/Theme.php',
         'App\\Models\\Themeupload' => __DIR__ . '/../..' . '/app/Models/Themeupload.php',
