@@ -63,8 +63,13 @@ Route::group(['middleware' => ['auth','statusCheck']], function() {
     Route::post('/setup/categories/add', [App\Http\Controllers\CategoryController::class, 'category_create'])->name('category.create');
     Route::any('/setup/categories/edit/{id}', [App\Http\Controllers\CategoryController::class, 'category_update'])->name('category.update');
     Route::delete('/setup/categories/delete/{id}', [App\Http\Controllers\CategoryController::class, 'category_delete'])->name('category.delete');
+});
 
-    
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/setup/checklist', [App\Http\Controllers\ChecklistController::class, 'index'])->name('checklist.index');
+    Route::post('/setup/checklist/add', [App\Http\Controllers\ChecklistController::class, 'checklist_create'])->name('checklist.create');
+    Route::any('/setup/checklist/edit/{id}', [App\Http\Controllers\ChecklistController::class, 'checklist_update'])->name('checklist.update');
+    Route::delete('/setup/checklist/delete/{id}', [App\Http\Controllers\ChecklistController::class, 'checklist_delete'])->name('checklist.delete');
 });
 
 Route::get('/auth/login', [App\Http\Controllers\AuthController::class, 'index'])->name('user_login');

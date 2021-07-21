@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Category Management') }}
+                <div class="card-header">{{ __('Checklist Management') }}
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary btn-sm pull-right" data-bs-toggle="modal"
-                        data-bs-target="#categoryModal">
-                        Add Category
+                        data-bs-target="#checklistModal">
+                        Add checklist
                     </button>
                 </div>
 
@@ -18,7 +18,7 @@
                     <table class="table table-sm">
                         <thead>
                             <tr>
-                                <th scope="col">Category Name</th>
+                                <th scope="col">checklist Name</th>
                                 <th scope="col">Date created</th>
                                 <th scope="col">Action</th>
 
@@ -26,10 +26,10 @@
                         </thead>
                         <tbody style="font-size:12px">
 
-                            @forelse($categories as $category)
+                            @forelse($checklists as $checklist)
                             <tr>
-                                <td>{{$category->name}}</td>
-                                <td>{{$category->created_at}}</td>
+                                <td>{{$checklist->name}}</td>
+                                <td>{{$checklist->created_at}}</td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button"
@@ -40,9 +40,9 @@
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"
                                             style="font-size:11px;">
                                             <li><a class="dropdown-item" data-bs-toggle="modal"
-                                                    href="#categoryEditModal{{$category->id}}">Edit</a></li>
+                                                    href="#checklistEditModal{{$checklist->id}}">Edit</a></li>
                                             <li><a class="dropdown-item" data-bs-toggle="modal"
-                                                    href="#categoryDeleteModal{{$category->id}}">Delete</a></li>
+                                                    href="#checklistDeleteModal{{$checklist->id}}">Delete</a></li>
                                         </ul>
                                     </div>
 
@@ -72,18 +72,18 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="checklistModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create New Category</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Create New checklist</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('category.create')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('checklist.create')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Category name(s) <small>(Seperate each item with a comma
+                        <label class="form-label">checklist name(s) <small>(Seperate each item with a comma
                                 ',')</small></label>
                         <textarea class="form-control form-control-sm" rows="3" name="title" required></textarea>
                     </div>
@@ -99,22 +99,22 @@
 </div>
 
 
-@foreach($categories as $category)
-<div class="modal fade" id="categoryEditModal{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+@foreach($checklists as $checklist)
+<div class="modal fade" id="checklistEditModal{{$checklist->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit checklist</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('category.update',[$category->id])}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('checklist.update',[$checklist->id])}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Category name</label>
-                        <input type="text" class="form-control form-control-sm" name="title" value="{{$category->name}}"
-                            required>
+                        <label class="form-label">checklist name</label>
+                        <input type="text" class="form-control form-control-sm" name="title"
+                            value="{{$checklist->name}}" required>
                     </div>
 
                 </div>
@@ -128,7 +128,7 @@
 </div>
 
 
-<div class="modal fade" id="categoryDeleteModal{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="checklistDeleteModal{{$checklist->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -136,12 +136,12 @@
                 <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('category.delete', [$category->id])}}" method="post">
+            <form action="{{route('checklist.delete', [$checklist->id])}}" method="post">
                 @csrf
                 @METHOD('DELETE')
                 <div class="modal-body">
                     <p class="lead">
-                        Are you sure you want to delete category? <br>{{$category->name}}
+                        Are you sure you want to delete checklist? <br>{{$checklist->name}}
                     </p>
                 </div>
                 <div class="modal-footer">
