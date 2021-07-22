@@ -25,6 +25,7 @@
 
 body{
     font-family: 'Source Sans Pro', sans-serif;
+    font-size:.95rem;
 }
 
 .signin-signup{
@@ -42,6 +43,13 @@ body{
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
 }
 
+.shadow-tw{
+    box-shadow:0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
+}
+
+.border-radius-tw{
+      border-radius:.375rem;
+}
 /*=================
 ===== LOGIN =======
 ===================*/
@@ -49,23 +57,31 @@ body{
 .login{
     background: #fff;
     padding:45px 45px 0px 45px;
+    border-top-left-radius: .375rem;
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+   border-bottom-left-radius: .375rem;
+  
     /* padding: 45px; */
+}
+.login .btn-link{
+    font-size: .95rem;
 }
 
 .login h4{
-    font-size:2rem;
+    font-size:1.5rem;
     font-weight: 900;
     color:var(--secondary);
 }
 
 .register{
-    font-size: 1rem;
+    font-size: .95rem;
     text-align: center;
     margin-top:20px;
 }
 
 .login-footer{
-    font-size: .9rem;
+    font-size: .95rem;
     margin-top:60px;
     color:var(--muted-text)
 }
@@ -75,14 +91,25 @@ body{
     box-shadow: none !important
 }
 .form-control{
-    height: 50px !important;
+    height: 40px !important;
     background-color: #fff !important;
-    border-radius: 0 !important;
+    /* border-radius: 0 !important; */
 }
 
+.form-group label{
+    font-size:.95rem;
+}
+
+.form-group {
+        margin-bottom: 1rem;
+}
+.form-group.row{
+    margin-top:.51rem;
+    /* border:1px solid; */
+}
 button.new{
-    height: 50px;
-    font-size: 1.2rem !important;
+    height: 40px;
+    font-size: 1rem !important;
     background: #FF9E20 ;
     border:#FF9E20;
     color:#fff;
@@ -92,10 +119,10 @@ button. hover{
     background:#ce7b10 !important;
 } */
 
-.img-side{
-    /* width:500vh; */
-    /* height:100vh; */
-    /* background: url('./img/bg.jpg') ; */
-    background: url('../img/bg-1.jpg') no-repeat  center/100% #22A6FD;
+.side-img img{
+   border-top-left-radius: 0;
+   border-top-right-radius: .375rem;
+   border-bottom-right-radius: .375rem;
+   border-bottom-left-radius: 0;
 
 }
