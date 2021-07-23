@@ -1,7 +1,114 @@
-@extends('layouts.app')
+@extends('layouts.dashboard.main')
 
 @section('content')
-<div class="container">
+
+            <!-- Site Content Wrapper -->
+            <div class="dt-content-wrapper">
+
+                <!-- Site Content -->
+                <div class="dt-content">
+
+                    <!-- Page Header -->
+                    <div class="dt-page__header">
+                        <h1 class="dt-page__title">Dashboard</h1>
+                    </div>
+                    <!-- /page header -->
+
+                     <!-- Card -->
+                     <div class="dt-card overflow-hidden">
+
+                        <!-- Card Body -->
+                        <div class="dt-card__body p-0">
+
+                            <!-- Tables -->
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th class="text-uppercase" scope="col">Role</th>
+                                        <th class="text-uppercase" scope="col">Status</th>
+                                        <th class="text-uppercase" scope="col">Created At</th>
+                                        <th class="text-uppercase" scope="col">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($roles as $role)
+                                    <tr>
+                                        <th scope="row">{{$role->id}}</th>
+                                        <td>{{$role->name}}</td>
+                                        <td><span class="badge badge-success badge-circle-animate1 align-text-top">Active</span></td>
+                                        <td>{{$role->created_at}}</td>
+                                        <td class="d-none"> 
+                                            <!-- List -->
+                                            <ul class="dt-list dt-list-cm-0">
+                                              <!-- List Item -->
+                                              <li class="dt-list__item">
+                                                <a class="text-light-gray" href="javascript:void(0)">
+                                                  <i class="icon icon-editors "></i>
+                                                </a>
+                                              </li>
+                                              <!-- /list item -->
+                  
+                                              <!-- List Item -->
+                                              <li class="dt-list__item">
+                                                <a class="text-light-gray" href="javascript:void(0)">
+                                                  <i class="icon icon-trash-filled"></i>
+                                                </a>
+                                              </li>
+                                              <!-- /list item -->
+                  
+                                              <!-- List Item -->
+                                              <li class="dt-list__item">
+                                                <div class="dropdown">
+                                                  <a class="dropdown-toggle no-arrow text-light-gray" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="icon icon-horizontal-more icon-fw"></i>
+                                                  </a>
+                                                  <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(18px, 18px, 0px);">
+                                                    <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                                    <a class="dropdown-item" href="javascript:void(0)">Another
+                                                      action</a>
+                                                    <a class="dropdown-item" href="javascript:void(0)">Something
+                                                      else here</a>
+                                                  </div>
+                                                </div>
+                                              </li>
+                                              <!-- /list item -->
+                                            </ul>
+                                            <!-- /list -->
+                                          </td>
+                                          <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                    <li><a class="dropdown-item" data-bs-toggle="modal"
+                                                            href="#exampleModal{{$role->id}}">Assign Permissions</a></li>
+        
+        
+                                                </ul>
+                                            </div>
+        
+                                        </td>
+        
+                                    </tr>
+                                    @endforeach
+                                   
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /tables -->
+
+                        </div>
+                        <!-- /card body -->
+
+                    </div>
+                    <!-- /card -->
+
+<div class="container d-none">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -34,6 +141,7 @@
                                 <th scope="row">{{$role->id}}</th>
                                 <td>{{$role->name}}</td>
                                 <td>{{$role->created_at}}</td>
+                               
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
@@ -67,7 +175,7 @@
 
 <!-- offcanvas -->
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight1" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end d-none" tabindex="-1" id="offcanvasRight1" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
         <h5 id="offcanvasRightLabel">Create New Role</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -86,7 +194,7 @@
 </div>
 
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight2" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end d-none" tabindex="-1" id="offcanvasRight2" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
         <h5 id="offcanvasRightLabel">Create New Permission</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -161,5 +269,8 @@
     </div>
 </div>
 @endforeach
+
+</div>
+<!-- /site content -->
 
 @endsection

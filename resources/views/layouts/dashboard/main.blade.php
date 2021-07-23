@@ -1,4 +1,4 @@
-@include('layouts.frontend.header')
-@include('layouts.frontend.navigation')
+@include('layouts.dashboard.header')
+@include('layouts.dashboard.navigation')
 @yield('content')
-@include('layouts.frontend.footer')
+@include('layouts.dashboard.footer')
