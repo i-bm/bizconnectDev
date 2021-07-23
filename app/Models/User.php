@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable 
 {
     use HasFactory, Notifiable,SoftDeletes,HasRoles;
@@ -26,6 +27,8 @@ class User extends Authenticatable
         'verify',
         'status',
     ];
+
+  
 
     /**
      * The attributes that should be hidden for arrays.

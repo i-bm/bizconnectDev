@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Iodev\Whois\Factory;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backend.home.index');
+
     }
 }

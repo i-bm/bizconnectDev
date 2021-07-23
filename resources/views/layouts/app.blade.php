@@ -48,6 +48,14 @@
                             <a class="nav-link" href="{{ route('users.index') }}">User Management</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('packages.index') }}">Package Management</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('themes.index') }}">Theme Management</a>
+                        </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
