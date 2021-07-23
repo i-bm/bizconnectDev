@@ -106,12 +106,12 @@
                          <h5 class="register mb-3">Already registered? <a href="{{route('login')}}">Login to your account</a></h5>
                     </form>
                 </div>
-           
         </div>
         <div class="col-md-5 p-0 shadow-tw side-img">
             <img src="assets/img/login-side-bg.jpg" style="min-width:600px" class="img-fluid d-none d-md-block d-lg-block d-sm-none" alt="">
-        
         </div>
     </div>
+     <h5 class="copyright">Copyright &copy; {{date('Y')}}  <a href="{{url('/')}}">{{config('app.name')}}.</a> All Rights Reserved.</h5>
+
 </div>
 @endsection
