@@ -1,33 +1,63 @@
-<div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
+@extends('layouts.auth.main')
 
-    <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
-        <div class="signin-logo tx-center tx-20 tx-bold tx-inverse"><span class="tx-normal">[</span> Hi! {{$user->name}}
-            <span class="tx-normal">]</span></div>
-        <div class="tx-center mg-b-60">Please Enter your Verification code to activate your account</div>
+@section('content')
+<main>
+<div class="container">
+    <div class="row align-items-center justify-content-center ">
+
+<div class="col-sm-5 auth shadow-tw">
+
+    <div class="text-center">
+    <img src="{{asset('assets/img/verify.png')}}" width="200" alt="" />
+    </div>
+     <div class="text-center">
+    <h4>Verify Your Account</h4>
+    <p class="">Protecting your account is our priority. Please verify your account by entering the verification code sent to <span class="p-color">{{$user->phone}}</span> or <span class="p-color">{{$user->email}}</span></p>
+        {{-- Hi {{$user->name}} --}}
+       </div>
+
+        
         <form action="{{route('verify_now',[$user->id])}}" method="post">
             @csrf
             <div class="form-group">
-                <input type="text" class="form-control" name="verification_code" placeholder="Enter Verification Code">
+            <label>Verification Code</label>
+                <input type="text" class="form-control shadow-tw border-radius-tw @error('verification_code') is-invalid @enderror"  name="verification_code" placeholder="Enter Verification Code">
                 @error('verification_code')
-                <p style="color:red; font-size:10px;">{{$message}}</p>
+                <p style="color:#DC3545; font-size:.8rem;">{{$message}}</p>
                 @enderror
             </div><!-- form-group -->
 
+<div class="row p-0">
+<div class="col-sm-8" style="font-size:.9rem;line-height:1rem;">
+        {{-- <p>It may take a minuite to receive your code</p> --}}
+        <p>Haven't received it? <a href="">Resend Verification Code</a></p>
+        </div>
 
-            <button type="submit" class="btn btn-success btn-block">Activate</button>
+        <div class="col-sm-4">
+         <button type="submit" class="btn btn-primary btn-block shadow-tw border-radius-tw">Verify</button>
+        </div>
+        </div>
+           
         </form>
         <br>
 
-        <form action="{{route('resend_verification', [$user->id])}}" method="post">
+        
+        <form action="{{route('resend_verification', [$user->id])}}" method="post" style="display: none;">
             @csrf
-            <button type="submit" class="btn btn-warning btn-block">Resend Verification Code</button>
+            <button type="submit" class="">Resend Verification Code</button>
         </form>
 
-        <div class="mg-t-60 tx-center"><a href="#" class="tx-info" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">Go back </a></div>
+        {{-- <div class="mg-t-60 tx-center"><a href="#" class="tx-info" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">Go back </a></div> --}}
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
-    </div><!-- login-wrapper -->
-</div><!-- d-flex -->
+    
+</div>
+
+</div>
+</div>
+</main>
+
+@endsection

@@ -39,6 +39,13 @@ body{
     background: #fff;;
 }
 
+.p-color{
+    color:var(--primary);
+}
+
+.s-color{
+    color:var(--secondary);
+}
 .shadow {
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
 }
@@ -49,6 +56,22 @@ body{
 
 .border-radius-tw{
       border-radius:.375rem;
+}
+
+.auth{
+     background: #fff;
+    padding:45px 45px 0px 45px;
+    border-radius:.375rem;
+}
+
+.auth .btn-link{
+    font-size: .95rem;
+}
+
+.auth h4{
+    font-size:1.5rem;
+    font-weight: 900;
+    color:var(--secondary);
 }
 /*=================
 ===== LOGIN =======
@@ -125,4 +148,17 @@ button. hover{
    border-bottom-right-radius: .375rem;
    border-bottom-left-radius: 0;
 
+}
+
+.copyright{
+    text-align:center;
+    color:#7f7e7e;
+    font-size:.9rem;
+    margin-top:1rem;
+
+}
+
+.copyright a{
+    color:var(--secondary);
+    font-weight:400;
 }

@@ -78,6 +78,7 @@
         
         </div>
     </div>
+     <h5 class="copyright">Copyright &copy; {{date('Y')}}  <a href="{{url('/')}}">{{config('app.name')}}.</a> All Rights Reserved.</h5>
 </div>
 </main>
 
