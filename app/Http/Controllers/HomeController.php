@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Iodev\Whois\Factory;
 
 class HomeController extends Controller
 {

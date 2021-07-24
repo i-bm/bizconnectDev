@@ -39,6 +39,39 @@ Route::group(['middleware' => ['auth','statusCheck']], function() {
 });
 
 
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/packages', [App\Http\Controllers\PackageController::class, 'index'])->name('packages.index');
+    Route::post('/packages/add', [App\Http\Controllers\PackageController::class, 'package_create'])->name('package.create');
+    Route::any('/packages/edit/{id}', [App\Http\Controllers\PackageController::class, 'package_update'])->name('package.update');
+    Route::delete('/packages/delete/{id}', [App\Http\Controllers\PackageController::class, 'package_delete'])->name('package.delete');
+    
+});
+
+
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/themes', [App\Http\Controllers\ThemeController::class, 'index'])->name('themes.index');
+    Route::post('/themes/add', [App\Http\Controllers\ThemeController::class, 'theme_create'])->name('theme.create');
+    Route::any('/themes/edit/{id}', [App\Http\Controllers\ThemeController::class, 'theme_update'])->name('theme.update');
+    Route::delete('/themes/delete/{id}', [App\Http\Controllers\ThemeController::class, 'theme_delete'])->name('theme.delete');
+
+    
+    
+});
+
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/setup/categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
+    Route::post('/setup/categories/add', [App\Http\Controllers\CategoryController::class, 'category_create'])->name('category.create');
+    Route::any('/setup/categories/edit/{id}', [App\Http\Controllers\CategoryController::class, 'category_update'])->name('category.update');
+    Route::delete('/setup/categories/delete/{id}', [App\Http\Controllers\CategoryController::class, 'category_delete'])->name('category.delete');
+});
+
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/setup/checklist', [App\Http\Controllers\ChecklistController::class, 'index'])->name('checklist.index');
+    Route::post('/setup/checklist/add', [App\Http\Controllers\ChecklistController::class, 'checklist_create'])->name('checklist.create');
+    Route::any('/setup/checklist/edit/{id}', [App\Http\Controllers\ChecklistController::class, 'checklist_update'])->name('checklist.update');
+    Route::delete('/setup/checklist/delete/{id}', [App\Http\Controllers\ChecklistController::class, 'checklist_delete'])->name('checklist.delete');
+});
+
 Route::get('/auth/login', [App\Http\Controllers\AuthController::class, 'index'])->name('user_login');
 
 Route::get('/auth/register', [App\Http\Controllers\AuthController::class, 'register'])->name('user_register');
