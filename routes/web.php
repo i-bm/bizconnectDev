@@ -72,6 +72,14 @@ Route::group(['middleware' => ['auth','statusCheck']], function() {
     Route::delete('/setup/checklist/delete/{id}', [App\Http\Controllers\ChecklistController::class, 'checklist_delete'])->name('checklist.delete');
 });
 
+
+Route::group(['middleware' => ['auth','statusCheck']], function() {
+    Route::get('/subscriptions', [App\Http\Controllers\SubscriptionController::class, 'index'])->name('subscription.index');
+    Route::get('/subscriptions/buy/{id}', [App\Http\Controllers\SubscriptionController::class, 'buy'])->name('subscription.buy');
+  
+});
+
+
 Route::get('/auth/login', [App\Http\Controllers\AuthController::class, 'index'])->name('user_login');
 
 Route::get('/auth/register', [App\Http\Controllers\AuthController::class, 'register'])->name('user_register');
