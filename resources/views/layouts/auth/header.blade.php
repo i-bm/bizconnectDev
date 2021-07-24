@@ -17,3 +17,4 @@
 
 </head>
 <body class="signin-signup">
+    @include('sweetalert::alert')
