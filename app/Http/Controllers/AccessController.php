@@ -30,7 +30,7 @@ class AccessController extends Controller
      */
     public function create()
     {
-        //
+        view('backend.access.index');
     }
 
     // Alert::toast('Print Receipt', 'success');
