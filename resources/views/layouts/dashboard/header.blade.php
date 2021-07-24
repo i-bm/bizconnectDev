@@ -38,3 +38,9 @@
   </div>
 </div>
 <!-- /loader -->
+
+<style>.dt-content-wrapper{background:#F9FAFB}
+.bg-gray-50 {
+    background-color: rgba(249,250,251);
+}
+</style>
