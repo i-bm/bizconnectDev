@@ -1,19 +1,36 @@
-@extends('layouts.app')
+@extends('layouts.dashboard.main')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('User Management') }}
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btn-sm pull-right" data-bs-toggle="modal"
-                        data-bs-target="#userModal">
-                        Add User
-                    </button>
-                </div>
+  <!-- Site Content Wrapper -->
+            <div class="dt-content-wrapper">
 
-                <div class="card-body">
+                <!-- Site Content -->
+                <div class="dt-content">
+
+                    <!-- Page Header -->
+                    <div class="dt-page__header">
+                        <h1 class="dt-page__title">Dashboard</h1>
+                    </div>
+                    <!-- /page header -->
+
+                    <div class="mb-3 text-right">
+                        <button class="btn btn-primary btn-sm" type="button" data-toggle="modal"
+                            data-target="#addUserModal" aria-controls="addUserModal">
+                            Add new role </button>
+    
+                        {{-- <button class="btn btn-info btn-sm" type="button" data-toggle="modal"
+                            data-target="#createNewPermissionModal" aria-controls="createNewPermissionModal">
+                            Add new permission</button> --}}
+                    </div>
+
+                     <!-- Card -->
+                     <div class="dt-card overflow-hidden">
+
+                        <!-- Card Body -->
+                        <div class="dt-card__body p-0">
+
+                         <!-- Tables -->
+                            <div class="table-responsive">
 
                     <table class="table table-sm">
                         <thead>
@@ -28,7 +45,7 @@
 
                             </tr>
                         </thead>
-                        <tbody style="font-size:12px">
+                        <tbody>
                             @foreach($users as $user)
                             <tr>
                                 <th scope="row">{{$user->id}}</th>
@@ -38,61 +55,70 @@
                                 <td>{{$user->accesslevel}}</td>
                                 <td>{{$user->created_at}}</td>
                                 <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button"
-                                            id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <ul class="dt-list dt-list-cm-0">
+                                            <!-- List Item -->
+                                            <li class="dt-list__item">
+                                              <a class="text-light-gray" href="javascript:void(0)"  data-toggle="modal" data-target="#editUserModal{{$user->id}}">
+                                                <i class="icon icon-editors "></i>
+                                              </a>
+                                            </li>
+                                            <!-- /list item -->
+                
+                                            <!-- List Item -->
+                                            <li class="dt-list__item">
+                                              <a class="text-light-gray" href="javascript:void(0)"  data-toggle="modal" data-target="#deleteUserModal{{$user->id}}">
+                                                <i class="icon icon-trash-filled"></i>
+                                              </a>
+                                            </li>
+                                            <!-- /list item -->
+                                          </ul>
 
-                                        </a>
-
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"
-                                            style="font-size:11px;">
-                                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                                    href="#userEditModal{{$user->id}}">Edit</a></li>
-                                            <li><a class="dropdown-item" data-bs-toggle="modal"
-                                                    href="#userDeleteModal{{$user->id}}">Delete</a></li>
-                                        </ul>
-                                    </div>
+                                 
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
+                        <!-- /card body -->
 
+                    </div>
+                    <!-- /card -->
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+</div>  
+                
 
 
 <!-- Modal -->
-<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+            <!-- Modal Header -->
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create New User</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h3 class="modal-title" id="model-7">Create New User</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
+            <!-- /modal header -->
             <form action="{{route('user.create')}}" method="post">
                 @csrf
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Full Name</label>
+                    <div class="mb-3 form-group">
+                        <label class="">Full Name</label>
                         <input type="text" class="form-control form-control-sm" name="name" required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email address</label>
+                    <div class="mb-3 form-group">
+                        <label class="">Email address</label>
                         <input type="email" class="form-control form-control-sm" name="email" required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Phone</label>
+                    <div class="mb-3 form-group">
+                        <label class="">Phone</label>
                         <input type="text" class="form-control form-control-sm" name="phone" required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Assign Role</label>
-                        <select class="form-select form-select-sm" name="access" required>
+                    <div class="mb-3 form-group">
+                        <label class="">Assign Role</label>
+                        <select class="form-control" name="access" required>
                             <option value="">Choose Role</option>
                             @foreach($roles as $role)
                             <option>{{$role->name}}</option>
@@ -111,7 +137,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
@@ -120,14 +146,18 @@
 </div>
 
 @foreach($users as $user)
-<div class="modal fade" id="userEditModal{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editUserModal{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+           <!-- Modal Header -->
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit User Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h3 class="modal-title" id="model-7">Edit User Details</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
+            <!-- /modal header -->
             <form action="{{route('user.update', [$user->id])}}" method="post">
                 @csrf
                 @METHOD('PATCH')
@@ -143,9 +173,9 @@
                         <input type="text" class="form-control form-control-sm" name="phone" value="{{$user->phone}}"
                             required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 form-group">
                         <label class="form-label">Assign Role</label>
-                        <select class="form-select form-select-sm" name="access" required>
+                        <select class="form-control form-select-sm" name="access" required>
                             <option>{{$user->accesslevel}} </option>
                             @foreach($roles as $role)
                             @if($role->name != $user->accesslevel)
@@ -157,7 +187,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
@@ -165,14 +195,21 @@
     </div>
 </div>
 
-<div class="modal fade" id="userDeleteModal{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="deleteUserModal{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content1">
+                <!-- Modal Content -->
         <div class="modal-content">
+
+            <!-- Modal Header -->
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">User Delete Comfirmation</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h3 class="modal-title" >User Delete Comfirmation</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
+            <!-- /modal header -->
             <form action="{{route('user.delete', [$user->id])}}" method="post">
                 @csrf
                 @METHOD('DELETE')
@@ -182,7 +219,7 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Yes, Delete now</button>
                 </div>
             </form>
@@ -190,5 +227,8 @@
     </div>
 </div>
 @endforeach
+
+</div>
+<!-- /site content -->
 
 @endsection

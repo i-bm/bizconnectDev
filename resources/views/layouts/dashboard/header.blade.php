@@ -44,3 +44,4 @@
     background-color: rgba(249,250,251);
 }
 </style>
+ @include('sweetalert::alert')
