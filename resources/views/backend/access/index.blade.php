@@ -14,6 +14,18 @@
                     </div>
                     <!-- /page header -->
 
+                      <!-- Entry Header -->
+                    <div class="dt-entry__header">
+
+                        <!-- Entry Heading -->
+                        <div class="dt-entry__heading">
+                            <h3 class="dt-entry__title">Access Level Management</h3>
+                        </div>
+                        <!-- /entry heading -->
+
+                    </div>
+                    <!-- /entry header -->
+
                     <div class="mb-3 text-right">
                         <button class="btn btn-primary btn-sm" type="button" data-toggle="modal"
                             data-target="#createNewRoleModal" aria-controls="createNewRoleModal">

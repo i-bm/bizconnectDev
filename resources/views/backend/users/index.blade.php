@@ -12,11 +12,22 @@
                         <h1 class="dt-page__title">Dashboard</h1>
                     </div>
                     <!-- /page header -->
+                     <!-- Entry Header -->
+                    <div class="dt-entry__header">
+
+                        <!-- Entry Heading -->
+                        <div class="dt-entry__heading">
+                            <h3 class="dt-entry__title">User Management</h3>
+                        </div>
+                        <!-- /entry heading -->
+
+                    </div>
+                    <!-- /entry header -->
 
                     <div class="mb-3 text-right">
                         <button class="btn btn-primary btn-sm" type="button" data-toggle="modal"
                             data-target="#addUserModal" aria-controls="addUserModal">
-                            Add new role </button>
+                            Add new user </button>
     
                         {{-- <button class="btn btn-info btn-sm" type="button" data-toggle="modal"
                             data-target="#createNewPermissionModal" aria-controls="createNewPermissionModal">
@@ -32,7 +43,7 @@
                          <!-- Tables -->
                             <div class="table-responsive">
 
-                    <table class="table table-sm">
+                    <table class="table table-sm table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">ID#</th>
@@ -55,7 +66,7 @@
                                 <td>{{$user->accesslevel}}</td>
                                 <td>{{$user->created_at}}</td>
                                 <td>
-                                <ul class="dt-list dt-list-cm-0">
+                                <ul class="d-flex" style="list-style: none;padding-left:0">
                                             <!-- List Item -->
                                             <li class="dt-list__item">
                                               <a class="text-light-gray" href="javascript:void(0)"  data-toggle="modal" data-target="#editUserModal{{$user->id}}">

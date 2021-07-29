@@ -12,7 +12,8 @@ class PackageController extends Controller
 {
     public function index(){
         $packages = Package::all();
-        return view('backend.package.index', compact('packages'));
+        $controllerName = 'Packages';
+        return view('backend.package.index', compact('packages','controllerName'));
     }
 
     public function package_create(Request $request){
